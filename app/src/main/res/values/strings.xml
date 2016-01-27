@@ -3,7 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="true_button">TRUE</string>
     <string name="false_button">FALSE</string>
-    <string name="next_button">Next</string>
     <string name="question_oceans">The Pacific Ocean is larger than the Atlantic Ocean.</string>
     <string name="question_mideast">The Suez Canal connects the Red Sea
 and the Indian Ocean.</string>
@@ -12,5 +11,4 @@ and the Indian Ocean.</string>
     in the Americas.</string>
     <string name="question_asia">Lake Baikal is the world\'s oldest and deepest
     freshwater lake.</string>
-    <string name="previous_button">Prev</string>
 </resources>

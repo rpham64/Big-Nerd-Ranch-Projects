@@ -1,10 +1,12 @@
 package bignerdranch.geoquiz;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,9 +18,12 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button mTrueButton;
-    private Button mFalseButton;
-    private Button mNextButton;
+    // Create a TAG for filtering logcat
+    private static final String TAG = "QuizActivity";
+
+    // Add a key for saving mCurrentIndex throughout configuration changes
+    private static final String KEY_INDEX = "index";
+
     private TextView mQuestionTextView;
 
     private Question[] mQuestionBank = new Question[]{
@@ -32,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
     private int mCurrentIndex = 0;
 
     private void updateQuestion() {
+
+        // Create an exception to log stack traces
+//        Log.d(TAG, "Updating question text for question #" + mCurrentIndex, new Exception());
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
     }
@@ -56,8 +64,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG, "onSaveInstanceState");
+        savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Add log statement to onCreate
+        Log.d(TAG, "onCreate(Bundle) called");
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -72,14 +91,47 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Get reference to inflated widgets
-        mTrueButton = (Button) findViewById(R.id.true_button);
-        mFalseButton = (Button) findViewById(R.id.false_button);
-        mNextButton = (Button) findViewById(R.id.next_button);
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
+
+        // Check savedInstanceState.
+        // If it exists, set mCurrentIndex to its int.
+        if (savedInstanceState != null) {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+        }
 
         // Initialize question
         updateQuestion();
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart() called");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume() called");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause() called");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop() called");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() called");
     }
 
     @Override
@@ -123,16 +175,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Set listener for the "Prev" button
     public void onPrevButtonClick(View view) {
 
         // Decrement mCurrentIndex
-        // If mCurrentIndex is -1, set it to mQuestionBank.length - 1
+        // If mCurrentIndex is -1, set it to the last index of mQuestionBank
         mCurrentIndex -= 1;
 
         if (mCurrentIndex == -1) {
             mCurrentIndex = mQuestionBank.length - 1;
         }
 
+        updateQuestion();
+    }
+
+    // Listener for the TextView
+    public void onTextViewClick(View view) {
+
+        // Same functionality as clicking on the Next button
+        mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
         updateQuestion();
     }
 }
