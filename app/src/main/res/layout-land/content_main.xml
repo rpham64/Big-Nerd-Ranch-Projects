@@ -13,18 +13,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="70dp"
+        android:layout_marginTop="50dp"
         android:padding="24dp"
         android:textSize="16sp"
         android:id="@+id/question_text_view"
-        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_gravity="center|top"
         android:onClick="onTextViewClick"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="30dp">
 
         <Button
             android:layout_width="wrap_content"
@@ -43,12 +44,21 @@
 
     </LinearLayout>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="@string/cheat_button"
+        android:id="@+id/cheat_button"
+        android:onClick="onCheatButtonClick"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="70dp"
-        android:layout_gravity="center">
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="40dp">
 
         <ImageButton
             android:layout_width="wrap_content"
