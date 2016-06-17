@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * Test committing
+ * Test committing123
  */
 public class CheatActivity extends AppCompatActivity {
 
