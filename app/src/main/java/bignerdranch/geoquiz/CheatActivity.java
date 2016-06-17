@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class CheatActivity extends AppCompatActivity {
 
     // TAG for filtering logcat
-    private static final String TAG = "CheatActivity";
+    private static final String TAG = "CheatActivity1";
 
     // Key for saving mAnswerTextView through configuration changes
     private static final String KEY_STRING = "string";
