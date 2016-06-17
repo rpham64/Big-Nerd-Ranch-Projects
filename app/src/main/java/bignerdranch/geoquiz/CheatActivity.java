@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * This is a test
+ */
 public class CheatActivity extends AppCompatActivity {
 
     // TAG for filtering logcat
