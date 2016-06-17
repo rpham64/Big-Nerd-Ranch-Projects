@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * This is a test
+ * Test again
  */
 public class CheatActivity extends AppCompatActivity {
 
