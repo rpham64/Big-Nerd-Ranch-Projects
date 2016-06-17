@@ -12,12 +12,12 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * Test dev
+ * This is a test
  */
 public class CheatActivity extends AppCompatActivity {
 
     // TAG for filtering logcat
-    private static final String TAG = "CheatActivity1";
+    private static final String TAG = "CheatActivity";
 
     // Key for saving mAnswerTextView through configuration changes
     private static final String KEY_STRING = "string";
